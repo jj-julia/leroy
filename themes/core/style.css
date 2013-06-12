@@ -1,0 +1,35 @@
+/** 
+* Description: Core theme for Lydia
+*/
+
+/**
+* Structure
+*/
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+
+html{}
+body{
+   background-color:#eee;
+   font: 1em Verdana, Arial, Helvetica, sans-serif;
+   background: #1E6D74;
+}
+
+#header,
+#main,
+#footer {
+   margin:0 auto;
+   width:970px;
+   background-color:#fff;
+   padding: 1em;
+   word-wrap: break-word;
+   border-bottom: 10px solid black;
+}
+
+h1, h2{
+   font-family: 'Lobster', cursive;
+}
+
+#header, #footer{
+   background: #BF7330;
+}
+
