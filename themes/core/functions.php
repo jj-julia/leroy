@@ -6,8 +6,12 @@
 /**
  * Add static entries in the template file. 
  */
-$ly->data['header'] = '<h1>Header: Leroy</h1>';
-$ly->data['main']   = '<p>Main: Now with a theme engine, Not much more to report for now.</p>';
+$ly->data['header'] = '<h1>Leroy</h1>';
+$ly->data['slogan'] = 'A PHP-based MVC-inspired CMF';
+$ly->data['favicon']      = theme_url('logo.svg');
+$ly->data['logo']         = theme_url('logo.svg');
+$ly->data['logo_width']   = 80;
+$ly->data['logo_height']  = 80;
 $ly->data['footer'] = <<<EOD
 <p>Footer: &copy; Based on Lydia written by Mikael Roos   (mos@dbwebb.se) Constructed by Julia Wells (wells.julia@gmail.com)</p>
 

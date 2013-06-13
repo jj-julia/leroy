@@ -33,7 +33,7 @@ class CLeroy implements ISingleton {
   /**
    * Frontcontroller, check url and route to controllers.
    */
- public function FrontControllerRoute() {
+public function FrontControllerRoute() {
     // Take current url and divide it in controller, method and parameters
     $this->request = new CRequest($this->config['url_type']);
     $this->request->Init($this->config['base_url']);

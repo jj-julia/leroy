@@ -6,11 +6,12 @@
 * Structure
 */
 @import url(http://fonts.googleapis.com/css?family=Lobster);
+@import url(http://fonts.googleapis.com/css?family=Cabin);
 
 html{}
 body{
    background-color:#eee;
-   font: 1em Verdana, Arial, Helvetica, sans-serif;
+   font-family: 'Cabin', Helvetica, Arial, sans-serif;
    background: #1E6D74;
 }
 
@@ -25,11 +26,41 @@ body{
    border-bottom: 10px solid black;
 }
 
-h1, h2{
-   font-family: 'Lobster', cursive;
-}
-
 #header, #footer{
    background: #BF7330;
 }
+
+
+#main{
+   min-height:400px;
+}
+
+/**
+ * Banner
+ */
+#banner {display:table;margin-bottom:5px;}
+
+.site-logo,
+.site-title,
+.site-slogan {display:table-cell;width:inherit;vertical-align:middle;text-align:left;}
+
+
+.site-title {
+      font-family:'Lobster',cursive;
+      font-size:10em;
+}
+
+.site-logo {}
+.site-title,
+.site-slogan {line-height:0;padding-left:20px; font-family:"Lucida Console", "Lucida Sans Typewriter", Monaco, "Bitstream Vera Sans Mono", monospace;}
+.site-slogan {font-size:1.5em;}
+
+
+/**
+ * Headings
+ */
+h1{border-bottom:3px double #ccc;}
+h2{border-bottom:1px solid #ccc; padding-bottom:4px;}
+
+
 
