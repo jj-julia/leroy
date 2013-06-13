@@ -10,6 +10,11 @@
 error_reporting(-1);
 ini_set('display_errors', 1);
 
+/**
+ * Set database(s).
+ */
+$ly->config['database'][0]['dsn'] = 'sqlite:' . LEROY_SITE_PATH . '/data/.ht.sqlite';
+
 
 /**
  * Set what to show as debug or developer information in the get_debug() theme helper.

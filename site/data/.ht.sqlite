@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS "Guestbook";
+CREATE TABLE "Guestbook" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "entry" TEXT, "created" DATETIME DEFAULT (datetime('now')));
