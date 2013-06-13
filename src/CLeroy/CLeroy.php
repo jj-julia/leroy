@@ -55,6 +55,7 @@ class CLeroy implements ISingleton {
     
     // Check if controller has a callable method in the controller class, if then call it
     if($controllerExists && $controllerEnabled && $classExists) {
+      $formattedMethod = str_replace(array('_', '-'), '', $method);
       $rc = new ReflectionClass($className);
       if($rc->implementsInterface('IController')) {
         if($rc->hasMethod($method)) {
