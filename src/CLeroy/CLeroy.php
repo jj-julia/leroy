@@ -6,7 +6,15 @@
  */
 class CLeroy implements ISingleton {
 
+  /**
+   * Members
+   */
   private static $instance = null;
+  public $config = null;
+  public $request = null;
+  public $data = null;
+  public $db = null;
+
 
   /**
    * Constructor
@@ -27,6 +35,9 @@ class CLeroy implements ISingleton {
     if(isset($this->config['database'][0]['dsn'])) {
       $this->db = new CMDatabase($this->config['database'][0]['dsn']);
     }
+    
+    // Create a container for all views and theme data
+    $this->views = new CViewContainer();
   }
   
   
@@ -94,10 +105,15 @@ public function FrontControllerRoute() {
    * ThemeEngineRender, renders the reply of the request to HTML or whatever.
    */
   public function ThemeEngineRender() {
+    // Is theme enabled?
+    if(!isset($this->config['theme'])) {
+      return;
+    }
+    
     // Get the paths and settings for the theme
-    $themeName   = $this->config['theme']['name'];
-    $themePath   = LEROY_INSTALL_PATH . "/themes/{$themeName}";
-    $themeUrl    = $this->request->base_url . "themes/{$themeName}";
+    $themeName  = $this->config['theme']['name'];
+    $themePath  = LEROY_INSTALL_PATH . "/themes/{$themeName}";
+    $themeUrl   = $this->request->base_url . "themes/{$themeName}";
     
     // Add stylesheet path to the $ly->data array
     $this->data['stylesheet'] = "{$themeUrl}/style.css";
@@ -112,6 +128,7 @@ public function FrontControllerRoute() {
 
     // Extract $ly->data to own variables and handover to the template file
     extract($this->data);      
+    extract($this->views->GetData());      
     include("{$themePath}/default.tpl.php");
   }
 

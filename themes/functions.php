@@ -40,3 +40,10 @@ function theme_url($url) {
 function current_url() {
   return CLeroy::Instance()->request->current_url;
 }
+
+/**
+* Render all views.
+*/
+function render_views() {
+  return CLeroy::Instance()->views->Render();
+}
