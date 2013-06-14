@@ -8,7 +8,7 @@ class CCGuestbook extends CObject implements IController {
 
   private $pageTitle = 'Leroy Guestbook Example';
   private $pageHeader = '<h1>Guestbook Example</h1><p>Showing off how to implement a guestbook in Leroy.</p>';
-  private $pageMessages = '<h2>Current messages</h2>';
+  private $pageMessages = '<h2>Current Messages</h2>';
   
 
   /**
@@ -18,14 +18,13 @@ class CCGuestbook extends CObject implements IController {
     parent::__construct();
   }
   
-
-  /**
+ /**
    * Implementing interface IController. All controllers must have an index action.
    */
-  public function Index() {	
+  public function Index() { 
     $formAction = $this->request->CreateUrl('guestbook/handler');
     $this->pageForm = "
-     <form action='{$formAction}' method='post'>
+      <form action='{$formAction}' method='post'>
         <p>
           <label>Message: <br/>
           <textarea name='newEntry'></textarea></label>
@@ -62,31 +61,24 @@ class CCGuestbook extends CObject implements IController {
     header('Location: ' . $this->request->CreateUrl('guestbook'));
   }
 
-  /**
+   /**
    * Save a new entry to database.
    */
   private function CreateTableInDatabase() {
     try {
-      $db = new PDO($this->config['database'][0]['dsn']);
-      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); 
-  
-      $stmt = $db->prepare("CREATE TABLE IF NOT EXISTS Guestbook (id INTEGER PRIMARY KEY, entry TEXT, created DATETIME default (datetime('now')));");
-      $stmt->execute();
+      $this->db->ExecuteQuery("CREATE TABLE IF NOT EXISTS Guestbook (id INTEGER PRIMARY KEY, entry TEXT, created DATETIME default (datetime('now')));");
     } catch(Exception$e) {
       die("$e<br/>Failed to open database: " . $this->config['database'][0]['dsn']);
     }
   }
+  
 
   /**
    * Save a new entry to database.
    */
   private function SaveNewToDatabase($entry) {
-    $db = new PDO($this->config['database'][0]['dsn']);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); 
-
-    $stmt = $db->prepare('INSERT INTO Guestbook (entry) VALUES (?);');
-    $stmt->execute(array($entry));
-    if($stmt->rowCount() != 1) {
+    $this->db->ExecuteQuery('INSERT INTO Guestbook (entry) VALUES (?);', array($entry));
+    if($this->db->rowCount() != 1) {
       echo 'Failed to insert new guestbook item into database.';
     }
   }
@@ -96,11 +88,7 @@ class CCGuestbook extends CObject implements IController {
    * Delete all entries from the database.
    */
   private function DeleteAllFromDatabase() {
-    $db = new PDO($this->config['database'][0]['dsn']);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING); 
-
-    $stmt = $db->prepare('DELETE FROM Guestbook;');
-    $stmt->execute();
+    $this->db->ExecuteQuery('DELETE FROM Guestbook;');
   }
   
   
@@ -109,17 +97,12 @@ class CCGuestbook extends CObject implements IController {
    */
   private function ReadAllFromDatabase() {
     try {
-      $db = new PDO($this->config['database'][0]['dsn']);
-      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-  
-      $stmt = $db->prepare('SELECT * FROM Guestbook ORDER BY id DESC;');
-      $stmt->execute();
-      $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
-      return $res;
+      $this->db->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+      return $this->db->ExecuteSelectQueryAndFetchAll('SELECT * FROM Guestbook ORDER BY id DESC;');
     } catch(Exception $e) {
-      return array();
+      return array();    
     }
   }
+
   
 } 
-  

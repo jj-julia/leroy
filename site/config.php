@@ -11,15 +11,18 @@ error_reporting(-1);
 ini_set('display_errors', 1);
 
 /**
+ * Set what to show as debug or developer information in the get_debug() theme helper.
+ */
+$ly->config['debug']['display-leroy'] = true;
+$ly->config['debug']['db-num-queries'] = true;
+$ly->config['debug']['db-queries'] = true;
+
+
+/**
  * Set database(s).
  */
 $ly->config['database'][0]['dsn'] = 'sqlite:' . LEROY_SITE_PATH . '/data/.ht.sqlite';
 
-
-/**
- * Set what to show as debug or developer information in the get_debug() theme helper.
- */
-$ly->config['debug']['display-leroy'] = true;
 
 /**
 * What type of urls should be used?
