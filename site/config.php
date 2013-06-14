@@ -13,9 +13,12 @@ ini_set('display_errors', 1);
 /**
  * Set what to show as debug or developer information in the get_debug() theme helper.
  */
+$ly->config['debug']['session'] = false;
+$ly->config['debug']['timer'] = true;
 $ly->config['debug']['display-leroy'] = true;
 $ly->config['debug']['db-num-queries'] = true;
 $ly->config['debug']['db-queries'] = true;
+
 
 
 /**
@@ -37,6 +40,14 @@ $ly->config['url_type'] = 1;
  * Set a base_url to use another than the default calculated
  */
 $ly->config['base_url'] = null;
+
+
+/**
+ * Define session name
+ */
+$ly->config['session_name'] = preg_replace('/[:\.\/-_]/', '', $_SERVER["SERVER_NAME"]);
+$ly->config['session_key']  = 'leroy';
+
 
 /**
  * Define session name

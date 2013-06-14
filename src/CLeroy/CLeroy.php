@@ -14,12 +14,19 @@ class CLeroy implements ISingleton {
   public $request = null;
   public $data = null;
   public $db = null;
+  public $views;
+  public $session;
+  public $timer = array();
 
 
   /**
    * Constructor
    */
   protected function __construct() {
+
+    // time page generation
+    $this->timer['first'] = microtime(true); 
+
     // include the site specific config.php and create a ref to $ly to be used by config.php
     $ly = &$this;
     require(LEROY_SITE_PATH.'/config.php');
@@ -27,6 +34,8 @@ class CLeroy implements ISingleton {
     // Start a named session
     session_name($this->config['session_name']);
     session_start();
+    $this->session = new CSession($this->config['session_key']);
+    $this->session->PopulateFromSession();
 
     // Set default date/time-zone
     date_default_timezone_set($this->config['timezone']);
