@@ -3,13 +3,13 @@
 <head>
   <meta charset='utf-8'/>
   <title><?=$title?></title>
-  <link rel='stylesheet' href='<?=$stylesheet?>'/>
   <link rel='shortcut icon' href='<?=$favicon?>'/>
+  <link rel='stylesheet' href='<?=$stylesheet?>'/>
 </head>
 <body>
   <div id='wrap-header'>
     <div id='header'>
-    <hgroup id='banner'>
+     <hgroup id='banner'>
       <img class='site-logo' src='<?=$logo?>' alt='logo' width='<?=$logo_width?>' height='<?=$logo_height?>' />
       <h1 class='site-title'><?=$header?></h1>
       <h2 class='site-slogan'><?=$slogan?></h2>

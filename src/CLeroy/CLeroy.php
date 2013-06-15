@@ -6,14 +6,15 @@
  */
 class CLeroy implements ISingleton {
 
+
   /**
    * Members
    */
   private static $instance = null;
-  public $config = null;
-  public $request = null;
-  public $data = null;
-  public $db = null;
+  public $config = array();
+  public $request;
+  public $data;
+  public $db;
   public $views;
   public $session;
   public $timer = array();
@@ -23,7 +24,6 @@ class CLeroy implements ISingleton {
    * Constructor
    */
   protected function __construct() {
-
     // time page generation
     $this->timer['first'] = microtime(true); 
 
@@ -60,12 +60,12 @@ class CLeroy implements ISingleton {
     }
     return self::$instance;
   }
-  
+
 
   /**
    * Frontcontroller, check url and route to controllers.
    */
-public function FrontControllerRoute() {
+  public function FrontControllerRoute() {
     // Take current url and divide it in controller, method and parameters
     $this->request = new CRequest($this->config['url_type']);
     $this->request->Init($this->config['base_url']);
@@ -110,10 +110,14 @@ public function FrontControllerRoute() {
     }
   }
   
+  
   /**
    * ThemeEngineRender, renders the reply of the request to HTML or whatever.
    */
   public function ThemeEngineRender() {
+    // Save to session before output anything
+    $this->session->StoreInSession();
+  
     // Is theme enabled?
     if(!isset($this->config['theme'])) {
       return;
@@ -141,4 +145,4 @@ public function FrontControllerRoute() {
     include("{$themePath}/default.tpl.php");
   }
 
-} 
+}

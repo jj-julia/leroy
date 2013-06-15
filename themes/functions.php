@@ -70,8 +70,8 @@ function base_url($url) {
 /**
  * Create a url to an internal resource.
  */
-function create_url($url=null) {
-  return CLeroy::Instance()->request->CreateUrl($url);
+function create_url($urlOrController=null, $method=null, $arguments=null) {
+  return CLeroy::Instance()->request->CreateUrl($urlOrController, $method, $arguments);
 }
 
 
