@@ -6,7 +6,7 @@
 /**
  * Add static entries in the template file. 
  */
-$ly->data['header'] = '<h1>Leroy</h1>';
+$ly->data['header'] = 'Leroy';
 $ly->data['slogan'] = 'A PHP-based MVC-inspired CMF';
 $ly->data['favicon']      = theme_url('logo.svg');
 $ly->data['logo']         = theme_url('logo.svg');

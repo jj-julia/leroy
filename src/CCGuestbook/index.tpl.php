@@ -1,7 +1,7 @@
 <h1>Guestbook </h1>
 <p>A guestbook in Leroy</p>
 
-<form action="<?=$formAction?>" method='post'>
+<form action="<?=$form_action?>" method='post'>
   <p>
     <label>Message: <br/>
     <textarea name='newEntry'></textarea></label>
@@ -10,6 +10,7 @@
     <input type='submit' name='doAdd' value='Add message' />
     <input type='submit' name='doClear' value='Clear all messages' />
     <input type='submit' name='doCreate' value='Create database table' />
+    <input style="display:none" type='text' name='email' value='' />
   </p>
 </form>
 

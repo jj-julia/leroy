@@ -3,19 +3,17 @@
 <head>
   <meta charset='utf-8'/>
   <title><?=$title?></title>
-  <link rel='shortcut icon' href='<?=$favicon?>'/>
   <link rel='stylesheet' href='<?=$stylesheet?>'/>
+  <link rel='shortcut icon' href='<?=$favicon?>'/>
 </head>
 <body>
   <div id='wrap-header'>
     <div id='header'>
-    <div id='banner'>
-      <a href='<?=base_url()?>'>
-        <img class='site-logo' src='<?=$logo?>' alt='logo' width='<?=$logo_width?>' height='<?=$logo_height?>' />
-      </a>
-      <p class='site-title'><?=$header?></p>
-      <p class='site-slogan'><?=$slogan?></p>
-    </div>
+    <hgroup id='banner'>
+      <img class='site-logo' src='<?=$logo?>' alt='logo' width='<?=$logo_width?>' height='<?=$logo_height?>' />
+      <h1 class='site-title'><?=$header?></h1>
+      <h2 class='site-slogan'><?=$slogan?></h2>
+    </hgroup>
     </div>
   </div>
   <div id='wrap-main'>
