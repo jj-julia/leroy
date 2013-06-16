@@ -15,21 +15,24 @@ class CObject {
   public $db;
   public $views;
   public $session;
+  protected $user;
 
 
   /**
-   * Constructor
+   * Constructor, can be instantiated by sending in the $ly reference.
    */
-  protected function __construct() {
-    $ly = CLeroy::Instance();
+  protected function __construct($ly=null) {
+    if(!$ly) {
+      $ly = CLeroy::Instance();
+    } 
     $this->config   = &$ly->config;
     $this->request  = &$ly->request;
     $this->data     = &$ly->data;
     $this->db       = &$ly->db;
     $this->views    = &$ly->views;
     $this->session  = &$ly->session;
+    $this->user     = &$ly->user;
   }
-
 
   /**
    * Redirect to another url and store the session
@@ -71,4 +74,27 @@ class CObject {
     $method = is_null($method) ? $this->request->method : null;   
     $this->RedirectTo($this->request->CreateUrl($controller, $method));
   }
+
+  /**
+   * Save a message in the session. Uses $this->session->AddMessage()
+   *
+   * @param $type string the type of message, for example: notice, info, success, warning, error.
+   * @param $message string the message.
+   */
+  protected function AddMessage($type, $message) {
+    $this->session->AddMessage($type, $message);
+  }
+
+
+  /**
+   * Create an url. Uses $this->request->CreateUrl()
+   *
+   * @param $urlOrController string the relative url or the controller
+   * @param $method string the method to use, $url is then the controller or empty for current
+   * @param $arguments string the extra arguments to send to the method
+   */
+  protected function CreateUrl($urlOrController=null, $method=null, $arguments=null) {
+    $this->request->CreateUrl($urlOrController, $method, $arguments);
+  }
+
 }

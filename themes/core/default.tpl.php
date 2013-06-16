@@ -9,11 +9,13 @@
 <body>
   <div id='wrap-header'>
     <div id='header'>
-     <hgroup id='banner'>
-      <img class='site-logo' src='<?=$logo?>' alt='logo' width='<?=$logo_width?>' height='<?=$logo_height?>' />
-      <h1 class='site-title'><?=$header?></h1>
-      <h2 class='site-slogan'><?=$slogan?></h2>
-    </hgroup>
+      <div id='login-menu'>
+        <?=login_menu()?>
+      </div>
+      <hgroup id='banner'>
+        <h1 class='site-title'><?=$header?></p>
+        <h2 class='site-slogan'><?=$slogan?></p>
+      </div>
     </div>
   </div>
   <div id='wrap-main'>
