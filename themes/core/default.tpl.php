@@ -13,9 +13,10 @@
         <?=login_menu()?>
       </div>
       <hgroup id='banner'>
+        <img class='site-logo' src='<?=$logo?>' alt='logo' width='<?=$logo_width?>' height='<?=$logo_height?>' />
         <h1 class='site-title'><?=$header?></p>
         <h2 class='site-slogan'><?=$slogan?></p>
-      </div>
+      </hgroup>
     </div>
   </div>
   <div id='wrap-main'>

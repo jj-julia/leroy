@@ -13,7 +13,7 @@ class CCDeveloper extends CObject implements IController {
     parent::__construct();
   }
 
-/**
+  /**
    * Implementing interface IController. All controllers must have an index action.
    */
   public function Index() { 
@@ -29,7 +29,7 @@ class CCDeveloper extends CObject implements IController {
 
     $this->data['main'] .= <<<EOD
 <h2>Dumping content of CDeveloper</h2>
-<p>Here is the content of the controller, including properties from CObject which holds access to common resources in CLeroy.</p>
+<p>Here is the content of the controller, including properties from CObject which holds access to common resources in CLydia.</p>
 EOD;
     $this->data['main'] .= '<pre>' . htmlent(print_r($this, true)) . '</pre>';
   }
@@ -90,5 +90,5 @@ $html
 </ul>
 EOD;
   }
-}
   
+} 
