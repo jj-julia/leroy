@@ -9,14 +9,14 @@
 <body>
   <div id='wrap-header'>
     <div id='header'>
-      <div id='login-menu'>
+      <div>
         <?=login_menu()?>
       </div>
-      <hgroup id='banner'>
+      <div id='banner'>
         <img class='site-logo' src='<?=$logo?>' alt='logo' width='<?=$logo_width?>' height='<?=$logo_height?>' />
-        <h1 class='site-title'><?=$header?></p>
-        <h2 class='site-slogan'><?=$slogan?></p>
-      </hgroup>
+        <h1 class='site-title'><?=$header?></h1>
+        <p class='site-slogan'><?=$slogan?></p>
+      </div>
     </div>
   </div>
   <div id='wrap-main'>
