@@ -11,7 +11,7 @@
 
 <p class='smaller-text'><em>
 <?php if($content['created']): ?>
-  This content were created by <?=$content['owner']?> <?=time_diff($content['created'])?> ago.
+  This content created was by <?=$content['owner']?> <?=time_diff($content['created'])?> ago.
 <?php else: ?>
   Content not yet created.
 <?php endif; ?>

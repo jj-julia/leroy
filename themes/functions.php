@@ -139,3 +139,10 @@ function current_url() {
 function render_views() {
   return CLeroy::Instance()->views->Render();
 }
+
+/**
+ * Escape data to make it safe to write in the browser.
+ */
+function esc($str) {
+  return htmlEnt($str);
+}
