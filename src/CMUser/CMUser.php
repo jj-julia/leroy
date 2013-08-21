@@ -8,7 +8,7 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess {
  /**
    * Properties
    */
-  public $profile = array();
+  public $profile;
 
 
   /**
@@ -19,6 +19,10 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess {
     $profile = $this->session->GetAuthenticatedUser();
     $this->profile = is_null($profile) ? array() : $profile;
     $this['isAuthenticated'] = is_null($profile) ? false : true;
+    if(!$this['isAuthenticated']) {
+      $this['id'] = 1;
+      $this['acronym'] = 'anonomous';      
+    }
   }
 
 
@@ -63,13 +67,14 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess {
    * Init the database and create appropriate tables.
    */
   public function Init() {
-    try {
+  try {
       $this->db->ExecuteQuery(self::SQL('drop table user2group'));
       $this->db->ExecuteQuery(self::SQL('drop table group'));
       $this->db->ExecuteQuery(self::SQL('drop table user'));
       $this->db->ExecuteQuery(self::SQL('create table user'));
       $this->db->ExecuteQuery(self::SQL('create table group'));
       $this->db->ExecuteQuery(self::SQL('create table user2group'));
+      $this->db->ExecuteQuery(self::SQL('insert into user'), array('anonomous', 'Anonomous, not authenticated', null, 'plain', null, null));
       $password = $this->CreatePassword('root');
       $this->db->ExecuteQuery(self::SQL('insert into user'), array('root', 'The Administrator', 'root@dbwebb.se', $password['algorithm'], $password['salt'], $password['password']));
       $idRootUser = $this->db->LastInsertId();
