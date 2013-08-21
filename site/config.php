@@ -63,7 +63,7 @@ $ly->config['session_key']  = 'leroy';
 
 
 /**
- * Define server timezone
+ * Define default server timezone when displaying date and times to the user. All internals are still UTC
  */
 $ly->config['timezone'] = 'Europe/Stockholm';
 
@@ -94,6 +94,8 @@ $ly->config['controllers'] = array(
   'developer' => array('enabled' => true,'class' => 'CCDeveloper'),
   'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
   'user'      => array('enabled' => true,'class' => 'CCUser'),
+  'blog'      => array('enabled' => true,'class' => 'CCBlog'),
+  'page'      => array('enabled' => true,'class' => 'CCPage'),
   'content'   => array('enabled' => true,'class' => 'CCContent'),
   'acp'       => array('enabled' => true,'class' => 'CCAdminControlPanel'),
 );
