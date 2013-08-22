@@ -138,3 +138,19 @@ function formatDateTimeDiff($start, $startTimeZone=null, $end=null, $endTimeZone
   // Prepend 'since ' or whatever you like
   return $interval->format($format);
 }
+
+
+
+/**
+ * Helper, make clickable links from URLs in text.
+ */
+function makeClickable($text) {
+  return preg_replace_callback(
+    '#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', 
+    create_function(
+      '$matches',
+      'return "<a href=\'{$matches[0]}\'>{$matches[0]}</a>";'
+    ),
+    $text
+  );
+}
