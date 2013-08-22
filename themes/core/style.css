@@ -92,7 +92,7 @@ a:active  {}
 input{font:inherit;}
 input[readonly]{color:#666;}
 label{font-size:smaller;}
-
+textarea{width: 90%; height: 10em;}
 
 /**
  * User feedback message wrappers.
