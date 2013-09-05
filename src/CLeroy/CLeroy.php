@@ -123,9 +123,7 @@ class CLeroy implements ISingleton {
     $this->session->StoreInSession();
   
     // Is theme enabled?
-    if(!isset($this->config['theme'])) {
-      return;
-    }
+    if(!isset($this->config['theme'])) { return; }
     
     // Get the paths and settings for the theme
     $themeName  = $this->config['theme']['name'];
@@ -133,8 +131,8 @@ class CLeroy implements ISingleton {
     $themeUrl   = $this->request->base_url . "themes/{$themeName}";
     
     // Add stylesheet path to the $ly->data array
-    $this->data['stylesheet'] = "{$themeUrl}/style.css";
-
+    $this->data['stylesheet'] = "{$themeUrl}/".$this->config['theme']['stylesheet'];
+    
     // Include the global functions.php and the functions.php that are part of the theme
     $ly = &$this;
     include(LEROY_INSTALL_PATH . '/themes/functions.php');
@@ -145,8 +143,8 @@ class CLeroy implements ISingleton {
 
     // Extract $ly->data to own variables and handover to the template file
     extract($this->data);      
-    extract($this->views->GetData());      
-    include("{$themePath}/default.tpl.php");
+    extract($this->views->GetData());
+    $templateFile = (isset($this->config['theme']['template_file'])) ? $this->config['theme']['template_file'] : 'default.tpl.php';
+    include("{$themePath}/{$templateFile}");
   }
-
 }

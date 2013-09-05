@@ -72,11 +72,7 @@ class CCUser extends CObject implements IController {
   }
   
 
- 
   /**
-   * Authenticate and login a user.
-   */
- /**
    * Authenticate and login a user.
    */
   public function Login() {
@@ -129,6 +125,7 @@ class CCUser extends CObject implements IController {
     $this->views->SetTitle('Create user')
                 ->AddInclude(__DIR__ . '/create.tpl.php', array('form' => $form->GetHTML()));     
   }
+  
 
   /**
    * Perform a creation of a user as callback on a submitted form.
@@ -152,6 +149,7 @@ class CCUser extends CObject implements IController {
       $this->RedirectToController('create');
     }
   }
+  
 
   /**
    * Init the user database.
@@ -161,4 +159,5 @@ class CCUser extends CObject implements IController {
     $this->RedirectToController();
   }
   
+
 } 

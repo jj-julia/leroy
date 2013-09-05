@@ -37,6 +37,7 @@ class CObject {
 
   /**
    * Redirect to another url and store the session
+   *
    * @param $url string the relative url or the controller
    * @param $method string the method to use, $url is then the controller or empty for current controller
    * @param $arguments string the extra arguments to send to the method
@@ -57,7 +58,6 @@ class CObject {
   }
 
 
-
   /**
    * Redirect to a method within the current controller. Defaults to index-method. Uses RedirectTo().
    *
@@ -67,7 +67,8 @@ class CObject {
   protected function RedirectToController($method=null, $arguments=null) {
     $this->RedirectTo($this->request->controller, $method, $arguments);
   }
-    
+
+
   /**
    * Redirect to a controller and method. Uses RedirectTo().
    *
@@ -89,7 +90,7 @@ class CObject {
    * @param $message string the message.
    * @param $alternative string the message if the $type is set to false, defaults to null.
    */
-  public function AddMessage($type, $message, $alternative=null) {
+  protected function AddMessage($type, $message, $alternative=null) {
     if($type === false) {
       $type = 'error';
       $message = $alternative;
@@ -111,5 +112,6 @@ class CObject {
     return $this->request->CreateUrl($urlOrController, $method, $arguments);
   }
 
+
 }
-  
+ 

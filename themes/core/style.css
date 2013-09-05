@@ -3,6 +3,13 @@
 */
 
 /**
+ * Settings
+ */
+@bgcolor1: #1E6D74;
+@bgcolor2: #fff;
+@color: #333;
+@font: 1em Verdana, Arial, Helvetica, sans-serif;
+/**
 * Structure
 */
 @import url(http://fonts.googleapis.com/css?family=Lobster);
@@ -12,7 +19,7 @@ html{}
 body{
    background-color:#eee;
    font-family: 'Cabin', Helvetica, Arial, sans-serif;
-   background: #1E6D74;
+   background: @bgcolor1;
 }
 
 #header,
@@ -20,7 +27,7 @@ body{
 #footer {
    margin:0 auto;
    width:970px;
-   background-color:#fff;
+   background-color:@bgcolor2;
    padding: 1em;
    word-wrap: break-word;
    border-bottom: 10px solid black;
