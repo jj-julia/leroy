@@ -67,5 +67,12 @@ class CCTheme extends CObject implements IController {
     }
   }
 
+  /**
+   * Display text as h1h6 and paragraphs with some inline formatting.
+   */
+  public function H1H6() {
+    $this->views->SetTitle('Theme testing headers and paragraphs')
+                ->AddInclude(__DIR__ . '/h1h6.tpl.php', array(),  'primary');
+  }
 
 } 
