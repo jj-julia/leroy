@@ -114,4 +114,15 @@ $ly->config['theme'] = array(
   'primary','sidebar','triptych-first','triptych-middle','triptych-last',
   'footer-column-one','footer-column-two','footer-column-three','footer-column-four','footer',
   ),
+
+ // Add static entries for use in the template file. 
+  'data' => array(
+    'header' => 'Leroy',
+    'slogan' => 'A PHP-based MVC-inspired CMF',
+    'favicon' => 'logo.png',
+    'logo' => 'logo.svg',
+    'logo_width'  => 80,
+    'logo_height' => 80,
+    'footer' => '<p>Footer: &copy; Based on Lydia written by Mikael Roos   (mos@dbwebb.se) Constructed by Julia Wells (wells.julia@gmail.com)</p>',
+  ),
 );
