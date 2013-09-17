@@ -68,4 +68,4 @@ if(!$changed && isset($_SERVER['If-Modified-Since']) && strtotime($_SERVER['If-M
   header('Content-type: text/css');  
   header('Last-Modified: ' . gmdate("D, d M Y H:i:s",$time) . " GMT");  
   readfile($css);  
-}
+}  

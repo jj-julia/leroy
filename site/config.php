@@ -63,7 +63,7 @@ $ly->config['session_key']  = 'leroy';
 
 
 /**
- * Define default server timezone when displaying date and times to the user. All internals are still UTC
+ * Define default server timezone when displaying date and times to the user. All internals are still UTC.
  */
 $ly->config['timezone'] = 'Europe/Stockholm';
 
@@ -101,6 +101,7 @@ $ly->config['controllers'] = array(
   'acp'       => array('enabled' => true,'class' => 'CCAdminControlPanel'),
 );
 
+
 /**
  * Settings for the theme.
  */
@@ -110,8 +111,7 @@ $ly->config['theme'] = array(
   'template_file'   => 'index.tpl.php',   // Default template file, else use default.tpl.php
   // A list of valid theme regions
   'regions' => array('flash','featured-first','featured-middle','featured-last',
-    'primary','sidebar','triptych-first','triptych-middle','triptych-last',
-    'footer-column-one','footer-column-two','footer-column-three','footer-column-four',
-    'footer',
+  'primary','sidebar','triptych-first','triptych-middle','triptych-last',
+  'footer-column-one','footer-column-two','footer-column-three','footer-column-four','footer',
   ),
 );

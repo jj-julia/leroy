@@ -2,7 +2,7 @@
 /**
  * A test controller for themes.
  * 
- * @package LeroyCore
+ * @package LerooyCore
  */
 class CCTheme extends CObject implements IController {
 
@@ -11,14 +11,11 @@ class CCTheme extends CObject implements IController {
    * Constructor
    */
   public function __construct() { parent::__construct(); 
-     $this->views->AddStyle('body:hover{background:#fff url('.$this->request->base_url.'themes/grid/grid_12_60_20.png) repeat-y center top;}');
+    $this->views->AddStyle('body:hover{background:#fff url('.$this->request->base_url.'themes/grid/grid_12_60_20.png) repeat-y center top;}');
   }
 
 
   /**
-   * Display what can be done with this controller.
-   */
-   /**
    * Display what can be done with this controller.
    */
   public function Index() {
@@ -67,12 +64,14 @@ class CCTheme extends CObject implements IController {
     }
   }
 
+
   /**
    * Display text as h1h6 and paragraphs with some inline formatting.
    */
   public function H1H6() {
     $this->views->SetTitle('Theme testing headers and paragraphs')
-                ->AddInclude(__DIR__ . '/h1h6.tpl.php', array(),  'primary');
+                ->AddInclude(__DIR__ . '/h1h6.tpl.php', array(), 'primary');
   }
+
 
 } 
